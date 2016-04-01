@@ -1,0 +1,3 @@
+extreme_001.vgstyle  
+1.修改了EditTextSearchBox中的ClearBtn的一些颜色(原来的太黑)
+

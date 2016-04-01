@@ -1,0 +1,91 @@
+unit aboutboxfrm;
+
+interface
+
+uses
+  {$IFDEF FPC}
+  LResources,
+  {$ENDIF}
+  SysUtils, Classes, Graphics, Controls, Forms,
+  Dialogs, vg_scene, vg_objects, vg_effects, ExtCtrls, vg_controls,
+  vg_ani, StdCtrls, vg_layouts;
+
+type
+
+  TfrmAbout = class(TForm)
+    VGScene: TvgScene;
+    Layout1: TvgLayout;
+    Root: TvgRectangle;
+    ShadowEffect1: TvgShadowEffect;
+    Rectangle2: TvgRectangle;
+    ext1, ext5: TvgText;
+    TxtAbtAuthor: TvgText;
+    imageLayout: TvgLayout;
+    Rectangle4: TvgRectangle;
+    Button1: TvgButton;
+    ColorAnimation1: TvgColorAnimation;
+    ColorAnimation2: TvgColorAnimation;
+    Image1: TvgImage;
+    Rectangle5: TvgRectangle;
+    Rectangle6: TvgRectangle;
+    TitleText: TvgText;
+    ShadowEffect2: TvgShadowEffect;
+    Rectangle7: TvgRectangle;
+    ColorAnimation3: TvgColorAnimation;
+    ColorAnimation4: TvgColorAnimation;
+    TxtSlogan: TvgText;
+    TxtAbtPAK: TvgText;
+    TxtAbtPAK2: TvgText;
+    TxtAuthorThks: TvgText;
+    //procedure Timer1Timer(Sender: TObject);
+    //procedure Button2Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    FMainFrmObj: TObject;
+
+    procedure LangChanged;
+  end;
+
+var
+  frmAbout: TfrmAbout;
+
+implementation
+uses
+  PAK_MainForm, PAK_Language;
+{$R *.dfm}
+
+//procedure TfrmAbout.Timer1Timer(Sender: TObject);
+//begin
+//  ProductKey.Text := Format('%d-%d-%d-%d', [Random($FFFF), Random($FFFF), Random($FFFF), Random($FFFF)]);
+//end;
+
+//procedure TfrmAbout.Button2Click(Sender: TObject);
+//begin
+//  TitleText.Text := 'It''s cool !';
+//end;
+
+procedure TfrmAbout.Button1Click(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TfrmAbout.LangChanged;
+begin
+  if nil = FMainFrmObj then
+    Exit;
+  with FMainFrmObj as TPAKMainFrm do
+  begin
+    TxtSlogan.Text := GetLangStr(lsiSlogan);
+    ext5.Text := GetLangStr(lsiAbtAuthorTip);
+    TxtAbtAuthor.Text := GetLangStr(lsiAbtAuthor);
+    TxtAbtPAK.Text := GetLangStr(lsiAbtPak);
+    TxtAbtPAK2.Text := GetLangStr(lsiAbtPakVal);
+    TxtAuthorThks.Text := GetLangStr(lsiAuthorThks);
+    Button1.Text := GetLangStr(lsiClose);
+  end;
+end;
+
+end.
